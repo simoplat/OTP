@@ -22,24 +22,24 @@ def calcola_valore_numerico(stringa_input: str) -> int:
     return int(risultato_stringa)
 
 
+def main():
+    orario_corrente = TIME.datetime.now().strftime("%Y-%m-%d %H:%M")
+    chiave = "SicurezzaInformatica"
+    stringa_da_hashare = chiave + orario_corrente
+    stringa_da_hashare_pulita = stringa_da_hashare.replace(" ", "")
+    print(f"Stringa da hashare: {stringa_da_hashare_pulita}")
 
-orario_corrente = TIME.datetime.now().strftime("%Y-%m-%d %H:%M")
-chiave = "Sicurezza"
-stringa_da_hashare = chiave + orario_corrente
-stringa_da_hashare_pulita = stringa_da_hashare.replace(" ", "")
-print(f"Stringa da hashare: {stringa_da_hashare_pulita}")
+    # I dati devono essere codificati in byte (.encode())
+    oggetto_hash = hashlib.sha256(stringa_da_hashare_pulita.encode())
 
-# I dati devono essere codificati in byte (.encode())
-oggetto_hash = hashlib.sha256(stringa_da_hashare_pulita.encode())
+    # Ottenere l'hash in formato esadecimale
+    esadecimale = oggetto_hash.hexdigest()
 
-# Ottenere l'hash in formato esadecimale
-esadecimale = oggetto_hash.hexdigest()
-
-
-
-print(f"Hash SHA256: {esadecimale}")
-print(f"Valore numerico totale dei caratteri della stringa: {calcola_valore_numerico(esadecimale)}")
+    print(f"Hash SHA256: {esadecimale}")
+    print(f"Valore numerico totale dei caratteri della stringa: {calcola_valore_numerico(esadecimale)}")
 
 
 
+if __name__ == "__main__":
+    main()
 
