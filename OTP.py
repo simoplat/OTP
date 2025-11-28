@@ -5,7 +5,7 @@ import datetime as TIME
 def calcola_valore_numerico(stringa_input: str) -> int:
     risultato_stringa = ""
     iterazione = 0
-    
+    tronca = 6
     for carattere in stringa_input:
         # La funzione ord() restituisce il valore Unicode del carattere (un INT)
         valore_numerico = ord(carattere)
@@ -18,7 +18,7 @@ def calcola_valore_numerico(stringa_input: str) -> int:
         # 2. Limitiamo l'operazione ai primi 3 caratteri (come richiesto)
         if iterazione == 10:
             break 
-
+    risultato_stringa = risultato_stringa[:tronca]
     return int(risultato_stringa)
 
 
